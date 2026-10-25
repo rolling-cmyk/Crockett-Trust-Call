@@ -432,6 +432,15 @@
     <p>&copy; 2026 Crockett Trust Call. All rights reserved.</p>
     <p style="margin-top:0.5rem;">Powered by <a href="https://www.cloudflare.com">Cloudflare</a></p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// Replace the text inside the quotes with your actual keys
+const supabaseUrl =  'https://enryfhkardpiwcvodhls.supabase.co';
+const supabaseAnonKey = 'sb_publishable_Fpegzgtv1v5gukj04kIj7g_J3OpP7Jl';
+
+
+const _supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+
 <script>
 const people=[{name:'Maya',age:32,city:'Oakland, CA',distance:8,intent:'Long-term relationship',interests:['Hiking','Cooking','Travel'],emoji:'🌿',bio:'Trying new recipes and finding quiet trails.'},{name:'Jordan',age:35,city:'San Francisco, CA',distance:14,intent:'Casual dating',interests:['Art','Live music','Travel'],emoji:'🎨',bio:'Gallery weekends, live jazz, and spontaneous trips.'},{name:'Sam',age:29,city:'Berkeley, CA',distance:5,intent:'Long-term relationship',interests:['Startups','Hiking','Cooking'],emoji:'☀️',bio:'Building things by day, perfecting pasta by night.'},{name:'Alex',age:38,city:'Oakland, CA',distance:3,intent:'Friendship',interests:['Travel','Live music','Art'],emoji:'🎸',bio:'Here to meet interesting people and share playlists.'},{name:'Riley',age:33,city:'San Francisco, CA',distance:19,intent:'Networking',interests:['Startups','Cooking','Travel'],emoji:'📚',bio:'Curious about people, products, and great coffee.'},{name:'Taylor',age:31,city:'Alameda, CA',distance:7,intent:'Long-term relationship',interests:['Hiking','Art','Live music'],emoji:'🌼',bio:'Sunsets, farmers markets, and trying new things.'}];
 const avatars=[{name:'Angel',gender:'women',emoji:'👩🏽‍🦱',desc:'Warm, direct & quick-witted'},{name:'Sofia',gender:'women',emoji:'👩🏻‍🦰',desc:'Playful, perceptive & bright'},{name:'Nia',gender:'women',emoji:'👩🏾‍🦱',desc:'Grounded, kind & candid'},{name:'Theo',gender:'men',emoji:'👨🏻‍🦱',desc:'Thoughtful, witty & steady'},{name:'Jules',gender:'men',emoji:'👨🏽‍🦰',desc:'Curious, upbeat & real'},{name:'Mateo',gender:'men',emoji:'👨🏾‍🦱',desc:'Charming, calm & perceptive'}];let selectedAvatar='Angel',activeAvatarGroup='all',toastTimer;
