@@ -319,6 +319,12 @@
       <div class="hero-buttons">
         <a href="#contact" class="btn-primary">Start Dating Smarter</a>
         <a href="#features" class="btn-secondary">Learn More</a>
+        <div id="avatar-upload-container" style="text-align: center; margin-top: 1rem;">
+<label for="avatar-upload" class="btn-primary" style="cursor: pointer;">
+Upload Profile Picture
+</label>
+<input type="file" id="avatar-upload" accept="image/*" style="display: none;" />
+</div>
       </div>
     </div>
   </section>
@@ -471,6 +477,27 @@ function confirmAge(){if(!document.getElementById('ageConfirm').checked)return t
 function verifyDemo(){if(!document.getElementById('verifyAge').checked||!document.getElementById('verifyPhoto').checked)return toast('Please confirm both statements.');closeModal('verifyModal');toast('Demo self-check complete—not an identity verification.')}
 function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3000)}
 document.addEventListener('DOMContentLoaded',()=>{renderPeople();renderAvatars();const chosen=localStorage.getItem('ctc-coach');if(chosen&&avatars.some(a=>a.name===chosen)){selectedAvatar=chosen;document.getElementById('coachName').textContent=`${chosen} · ${avatars.find(a=>a.name===chosen).desc}`}if(!localStorage.getItem('ctc-age-confirmed'))openModal('ageModal');if(location.hash){let page=location.hash.slice(1);if(document.getElementById('page-'+page))go(page)}});
+document.getElementById('avatar-upload').addEventListener('change', async (event) => {
+const file = event.target.files[0];
+if (!file) return;
+
+const { data, error } = await supabase
+.storage
+.from('avatars')
+.upload(`profiles/${file.name}`, file, {
+cacheControl: '3600',
+upsert: true
+});
+
+if (error) {
+console.error("Upload error:", error.message);
+alert("Upload failed: " + error.message);
+} else {
+console.log("Upload successful!", data);
+alert("Picture uploaded successfully!");
+}
+});
+
 </script>
 </body>
 </html>
